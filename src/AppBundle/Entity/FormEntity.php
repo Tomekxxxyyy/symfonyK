@@ -32,7 +32,6 @@ class FormEntity
     private $surname;
     
      /**
-     * @Assert\Regex(pattern = "/\d+/" ,message = "tylko litery dozwolone")
      * @Assert\NotBlank()
      * @ORM\Column(type="integer", length=255)
      */
@@ -53,11 +52,13 @@ class FormEntity
     private $country;
     
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="array", length=255)
      */
     private $availability;
     
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255)
      */
     private $profession;
