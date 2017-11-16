@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Doświadczenie</th>
+            <th>Miasto</th>
+            <th>Państwo</th>
+            <th>Dyspozycyjność</th>
+            <th>Profesja</th>
+        </tr>
+        <tr>
+            <td>{{data.name}}</td>
+            <td>{{data.surname}}</td>
+            <td>{{data.experience}}</td>
+            <td>{{data.city}}</td>
+            <td>{{data.country}}</td>
+            <td>
+                <ul>
+                    {% for item in data.availability%}
+                        <li>{{item}}</li>    
+                    {% endfor %}
+                <ul>
+            </td>
+            <td>{{data.profession}}</td>
+        </tr>    
+    <table>    
+    
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    table{
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td, th{
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    tr:nth-child(even){
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+    th{
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+{% endblock %}

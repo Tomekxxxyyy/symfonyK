@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id = "background">
+        
+        {{ form_start(form) }}
+        <div class = "form">
+            {{ form_label(form.name, null, {'label_attr': {'class': 'input-label'} }) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>    
+        <div class = "form">
+            {{ form_label(form.surname, null, {'label_attr': {'class': 'input-label'} }) }}
+            {{ form_errors(form.surname) }}
+            {{ form_widget(form.surname) }}
+        </div>
+        <div class = "form">
+            {{ form_label(form.experience, null, {'label_attr': {'class': 'input-label'} }) }}
+            {{ form_errors(form.experience) }}
+            {{ form_widget(form.experience) }}
+            <div id="slider-range-max"></div>
+        </div>
+        <div class = "form">
+            {{ form_label(form.city, null, {'label_attr': {'class': 'input-label'} }) }}
+            {{ form_errors(form.city) }}
+            {{ form_widget(form.city) }}
+        </div>        
+        <div class = "form">
+            {{ form_label(form.country, null, {'label_attr': {'class': 'input-label'} }) }}
+            {{ form_errors(form.country) }}
+            {{ form_widget(form.country) }}
+        </div>    
+        <div class = "form">
+            {{ form_label(form.availability) }}
+            {{ form_errors(form.availability) }}
+            {{ form_widget(form.availability) }}
+        </div>
+        <div class = "form">
+            {{ form_label(form.profession) }}
+            {{ form_errors(form.profession) }}
+            {{ form_widget(form.profession) }}
+        </div>
+        <div class = "form">
+            {{form_row(form.save, {'attr': {'class': 'input-submit'} })}}
+        </div>    
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+    input[type="text"]{
+        width: 15%;
+        background-color: #3CBC8D;
+        color: white;
+    }
+    .form{
+        padding: 5px;
+    }
+    .input-label{
+       display: block;
+    }
+    .input-submit{
+        background-color: #3CBC8D;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    #slider-range-max{
+        width: 15%;
+    }
+    #background{
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+    </style>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+{% endblock %}
+
+{% block javascripts %}
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#slider-range-max" ).slider({
+      range: "max",
+      min: 1,
+      max: 25,
+      value: 2,
+      slide: function( event, ui ) {
+        $( "#form_experience" ).val( ui.value );
+      }
+    });
+    $( "#form_experience" ).val( $( "#slider-range-max" ).slider( "value" ) );
+  } );
+  </script>
+{% endblock %}
